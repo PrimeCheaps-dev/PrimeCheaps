@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PrimeCheaps - Cheap Colognes in Mandeville</title>
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#0a0a0a;color:#fff}
+header{background:linear-gradient(90deg,#000,#d4af37 50%,#000);padding:40px 20px;text-align:center}
+h1{font-size:2.2em;margin:0;letter-spacing:3px;color:#d4af37}
+.tagline{margin-top:8px;color:#ddd}
+.container{max-width:1000px;margin:auto;padding:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.card{background:#151515;border:1px solid #2a2a2a;border-radius:14px;overflow:hidden;transition:0.2s}
+.card:hover{border-color:#d4af37;transform:translateY(-3px)}
+.card img{width:100%;height:200px;object-fit:cover;background:#222}
+.info{padding:14px}
+.card h3{margin:0 0 5px;font-size:1.1em}
+.scent{font-size:0.9em;color:#aaa;margin-bottom:8px}
+.price{color:#d4af37;font-weight:bold;font-size:1.1em}
+.btn{display:block;text-align:center;margin-top:10px;padding:10px;background:#d4af37;color:#000;font-weight:bold;border-radius:8px;text-decoration:none}
+footer{text-align:center;padding:30px;color:#777;font-size:0.9em}
+.search{width:100%;padding:12px;border-radius:8px;border:1px solid #333;background:#111;color:#fff;margin-bottom:20px}
+</style>
+</head>
+<body>
+<header>
+<h1>PRIMECHEAPS</h1>
+<p class="tagline">20 Cheap Colognes • Big Smell • Small Price • Mandeville, JM</p>
+</header>
+
+<div class="container">
+<input class="search" placeholder="Search by name or scent..." onkeyup="filter()">
+
+<div class="grid" id="products"></div>
+</div>
+
+<footer>
+© 2026 PrimeCheaps | WhatsApp orders | Cash / Lynk / Bank Transfer
+</footer>
+
+<script>
+const waNumber = "+1 (876) 406-8352"; // <-- put your WhatsApp here
+const products = [
+{name:"Prime Black",scent:"Woody Musk",price:1500,img:"https://via.placeholder.com/400x400/111/d4af37?text=Prime+Black"},
+{name:"Prime Fresh",scent:"Citrus Aqua",price:1300,img:"https://via.placeholder.com/400x400/111/d4af37?text=Prime+Fresh"},
+{name:"Prime Gold",scent:"Sweet Spicy",price:1700,img:"https://via.placeholder.com/400x400/111/d4af37?text=Prime+Gold"},
+{name:"Prime Ice",scent:"Cool Mint",price:1400,img:"https://via.placeholder.com/400x400/111/d4af37?text=Prime+Ice"},
+{name:"Prime Blue",scent:"Ocean Breeze",price:1200,img:"https://via.placeholder.com/400x400/111/d4af37?text=Prime+Blue"},
+{name:"Prime Lux",scent:"Amber Vanilla",price:1800,img:"https://via.placeholder.com/400x400/111/d4af37?text=Prime+Lux"},
+{name:"Prime Sport",scent:"Energizing",price:1100,img:"https://via.placeholder.com/400x400/111/d4af37?text=Prime+Sport"},
+{name:"Prime Oud",scent:"Rich Oud",price:2000,img:"https://via.placeholder.com/400x400/111/d4af37?text=Prime+Oud"},
+{name:"Prime White",scent:"Clean Cotton",price:1250,img:"https://via.placeholder.com/400x400/111/d4af37?text=Prime+White"},
+{name:"Prime Red",scent:"Fruity Bold",price:1350,img:"https://via.placeholder.com/400x400/111/d4af37?text=Prime+Red"},
+{name:"Prime Nights",scent:"Dark Woods",price:1600,img:"https://via.placeholder.com/400x400/111/d4af37?text=Prime+Nights"},
+{name:"Prime Breeze",scent:"Light Floral",price:1100,img:"https://via.placeholder.com/400x400/111/d4af37?text=Prime+Breeze"},
+{name:"Prime Storm",scent:"Intense Musk",price:1900,img:"https://via.placeholder.com/400x400/111/d4af37?text=Prime+Storm"},
+{name:"Prime Royal",scent:"Leather Gold",price:2100,img:"https://via.placeholder.com/400x400/111/d4af37?text=Prime+Royal"},
+{name:"Prime Cool",scent:"Menthol Fresh",price:1150,img:"https://via.placeholder.com/400x400/111/d4af37?text=Prime+Cool"},
+{name:"Prime Heat",scent:"Warm Spice",price:1450,img:"https://via.placeholder.com/400x400/111/d4af37?text=Prime+Heat"},
+{name:"Prime Sky",scent:"Airy Clean",price:1200,img:"https://via.placeholder.com/400x400/111/d4af37?text=Prime+Sky"},
+{name:"Prime Shadow",scent:"Smoky Wood",price:1750,img:"https://via.placeholder.com/400x400/111/d4af37?text=Prime+Shadow"},
+{name:"Prime Wave",scent:"Marine Fresh",price:1300,img:"https://via.placeholder.com/400x400/111/d4af37?text=Prime+Wave"},
+{name:"Prime Boss",scent:"Power Musk",price:1950,img:"https://via.placeholder.com/400x400/111/d4af37?text=Prime+Boss"}
+];
+
+function show(list){
+document.getElementById('products').innerHTML = list.map(p=>`
+<div class="card">
+<img src="${p.img}" alt="${p.name}">
+<div class="info">
+<h3>${p.name}</h3>
+<p class="scent">${p.scent}</p>
+<p class="price">J$${p.price.toLocaleString()}</p>
+<a class="btn" href="https://wa.me/${waNumber}?text=Hi PrimeCheaps, I want ${encodeURIComponent(p.name)}" target="_blank">Order on WhatsApp</a>
+</div>
+</div>`).join('');
+}
+show(products);
+
+function filter(){
+const q = document.querySelector('.search').value.toLowerCase();
+show(products.filter(p=>p.name.toLowerCase().includes(q)||p.scent.toLowerCase().includes(q)));
+}
+</script>
+</body>
+</html>
